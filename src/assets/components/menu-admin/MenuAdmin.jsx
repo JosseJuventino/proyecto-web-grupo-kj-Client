@@ -30,10 +30,13 @@ function MenuAdmin() {
   return (
     <div className="flex items-center justify-around py-6 bg-black lg:just lg:h-screen md:w-full lg:w-1/4 lg:flex-col md:flex-row">
       <div className="flex flex-row items-center justify-around py-2 text-white rounded-md cursor-pointer lg:px-2 lg:mr-10 lg:m-5 hover:bg-bg-hover-on-black">
-        <Link className="flex flex-row items-center text-lg" to={"crear-proyecto"}>
+        <Link
+          className="flex flex-row items-center text-lg"
+          to={"crear-proyecto"}
+        >
           <img className="hidden w-8 lg:block" src={logo_uca} alt="logo_uca" />
           <p className="hidden mt-2 ml-3 lg:block">Nuevo proyecto</p>
-        </ Link>
+        </Link>
         <i className="text-lg lg:ml-10 fa-solid fa-pen-to-square"></i>
       </div>
       <div className="flex flex-row items-center justify-between h-full lg:flex-col">
@@ -62,6 +65,12 @@ function MenuAdmin() {
             text={"Inscripciones"}
             link={"inscripcion-admin"}
             icon={"fa-solid fa-users"}
+            clickEvent={changeLink}
+          />
+          <LinksMenu
+            text={"Vista de usuario"}
+            link={"/dashboard"}
+            icon={"fa-solid fa-eye"}
             clickEvent={changeLink}
           />
         </div>
