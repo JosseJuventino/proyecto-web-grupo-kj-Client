@@ -23,7 +23,7 @@ function Header() {
   }, [user]);
 
   function renderLinks() {
-    let isRenderTutor = linksLoggedIn;
+    let isRenderTutor = [...linksLoggedIn]; // Copiar el arreglo original
 
     if (user && user.isTutor) {
       isRenderTutor.push({
@@ -31,6 +31,14 @@ function Header() {
         href: "/dashboard/projects/circulos-estudio/panel",
       });
     }
+
+    if (user && user.isAdmin) {
+      isRenderTutor.push({
+        text: "Administrar",
+        href: "/administrator/dashboard/inicio",
+      });
+    }
+
     let linksToRender = isLoggedIn ? isRenderTutor : linksLoggedOut;
     return linksToRender.map((link) => (
       <a
