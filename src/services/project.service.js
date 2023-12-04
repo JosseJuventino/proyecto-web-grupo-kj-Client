@@ -1,6 +1,6 @@
 // Importando librerias
 import axios from "axios";
-const BASE_URL = "https://real-erin-mussel-sock.cyclic.app/api/v1/project/";
+const BASE_URL = "https://mysterious-kilt-lamb.cyclic.app/api/v1/project/";
 
 export const getAllProjects = async () => {
   try {
