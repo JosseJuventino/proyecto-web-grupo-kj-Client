@@ -1,6 +1,6 @@
 // Importando librerias
 import axios from "axios";
-const BASE_URL = "http://localhost:3001/api/v1/inscriptionTutor/";
+const BASE_URL = "https://real-erin-mussel-sock.cyclic.app/api/v1/inscriptionTutor/";
 
 export const getInscriptionsTutor = async () => {
   try {
