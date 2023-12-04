@@ -20,7 +20,7 @@ function CardContainer({
       <div className="p-10 mt-5">
         <h1 className="text-3xl">{text}</h1>
         {projectsSliced.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 mx-7 card-container md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 mx-7 card-container md:grid-cols-2 lg:grid-cols-4">
             {projectsSliced.map((project, index) => (
               <Card key={index} project={project} />
             ))}
