@@ -30,7 +30,7 @@ function Footer() {
             <div className="flex flex-col md:pl-20">
               <LinkFooter
                 icon={"fa-solid fa-envelope"}
-                text={"00048322@uca.edu.sv"}
+                text={"centro.serviciosocial@uca.edu.sv"}
               />
               <LinkFooter
                 icon={"fa-solid fa-location-dot"}

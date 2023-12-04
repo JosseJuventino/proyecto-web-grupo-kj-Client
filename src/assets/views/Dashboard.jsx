@@ -24,10 +24,10 @@ function Dashboard() {
       const proyectos = JSON.parse(localStorage.getItem("projects")) || [];
 
       const projectsActiveFiltered = proyectos.filter((project) =>
-        uidProjectsActivos.includes(project.idProject)
+        uidProjectsActivos.includes(project._id)
       );
       const projectsFinishedFiltered = proyectos.filter((project) =>
-        uidProjectsFinalizados.includes(project.idProject)
+        uidProjectsFinalizados.includes(project._id)
       );
 
       setProjectFinished(projectsFinishedFiltered);
@@ -41,23 +41,23 @@ function Dashboard() {
         <div className="font-primary bg-background-primary">
           <Header isLoggedIn={true} />
           <Resume />
-            <div>
-              <CardContainer
-                text="Proyectos activos"
-                hasButton={true}
-                type="active"
-                projectsActives={projectActive}
-                needMorePage={projectFinished.length > 4 ? true : false}
-              />
+          <div>
+            <CardContainer
+              text="Proyectos activos"
+              hasButton={true}
+              type="active"
+              projectsActives={projectActive}
+              needMorePage={projectFinished.length > 4 ? true : false}
+            />
 
-              <CardContainer
-                text="Proyectos finalizados"
-                hasButton={true}
-                type="finished"
-                projectsActives={projectFinished}
-                needMorePage={projectFinished.length > 4 ? true : false}
-              />
-            </div>
+            <CardContainer
+              text="Proyectos finalizados"
+              hasButton={true}
+              type="finished"
+              projectsActives={projectFinished}
+              needMorePage={projectFinished.length > 4 ? true : false}
+            />
+          </div>
           <Footer />
         </div>
       ) : (
