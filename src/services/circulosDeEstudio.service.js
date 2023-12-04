@@ -1,7 +1,6 @@
 // Importando librerias
 import axios from "axios";
-const BASE_URL =
-  "https://mysterious-kilt-lamb.cyclic.app/api/v1/inscriptionTutor/";
+const BASE_URL = "https://kj-api.ironcity.network/api/v1/inscriptionTutor/";
 
 export const getInscriptionsTutor = async () => {
   try {

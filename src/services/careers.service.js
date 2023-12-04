@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://mysterious-kilt-lamb.cyclic.app/api/v1/career/";
+const BASE_URL = "https://kj-api.ironcity.network/api/v1/career/";
 
 export const getAllCareers = async () => {
   try {

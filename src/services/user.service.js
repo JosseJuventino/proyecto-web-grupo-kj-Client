@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://mysterious-kilt-lamb.cyclic.app/api/v1/user/";
+const BASE_URL = "https://kj-api.ironcity.network/api/v1/user/";
 
 export const getUserById = async (id) => {
   try {
