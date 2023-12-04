@@ -56,7 +56,7 @@ function Header() {
       image: user ? user.profilePicture : userPhotoDefault,
       className: `mx-2 ${modal ? "my-10" : ""}`,
       text: user ? cutName(user.name) : "Iniciar Sesión",
-      referrerpolicy: "no-referrer"
+      referrerPolicy: "no-referrer",
     };
 
     return <ButtonHeader {...buttonProps} />;

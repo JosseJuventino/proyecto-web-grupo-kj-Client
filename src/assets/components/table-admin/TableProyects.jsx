@@ -4,20 +4,57 @@ import { useState } from "react";
 import LogoUca from "../../images/logo_uca.png";
 import "./TableAdmin.css";
 import { format } from "date-fns";
-import { NavLink, } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./row.css";
+import {
+  getProjectById,
+  getProjectByName,
+} from "../../../services/project.service";
 
 function ProyectsAdmin({ header, rows, showAction, showCheckbox }) {
   const [isChecked, setIsChecked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fileName, setFileName] = useState(" Reporte de proyectos");
   const [selectedRowData, setSelectedRowData] = useState(null);
+  const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isApprovalModalOpen, setIsApprovalModalOpen] = useState(false);
 
-  const handleRowClick = (rowData) => {
+  const handleRowClick = (rowData, rowIndex) => {
+    setSelectedRowIndex(rowIndex === selectedRowIndex ? null : rowIndex);
     setSelectedRowData(rowData);
+    setIsButtonDisabled(rowIndex === null);
   };
 
   const handleFileNameChange = (e) => {
     setFileName(e.target.value);
+  };
+
+  const handleApprove = async () => {
+    if (!selectedRowData) {
+      // No hay fila seleccionada, manejar el caso según tus necesidades
+      return;
+    }
+
+    // Obtener el nombre del proyecto desde la fila seleccionada
+    const projectName = selectedRowData[1];
+
+    try {
+      // Codificar el nombre del proyecto antes de enviarlo a la API
+      const encodedProjectName = encodeURIComponent(projectName);
+
+      // Llamar a la API para aprobar el proyecto con el nombre codificado
+      const response = await getProjectByName(encodedProjectName);
+
+      // Realizar acciones adicionales según la respuesta de la API
+      console.log(response);
+
+      // Cerrar el modal de aprobación
+      setIsApprovalModalOpen(false);
+    } catch (error) {
+      // Manejar errores de la API según tus necesidades
+      console.error("Error al aprobar el proyecto:", error);
+    }
   };
 
   const generatePDF = () => {
@@ -107,35 +144,29 @@ function ProyectsAdmin({ header, rows, showAction, showCheckbox }) {
     if (selectedRowData && selectedRowData.length > 0) {
       // Obtener el nombre del proyecto desde la primera columna de la fila seleccionada
       const projectName = selectedRowData[0];
-      
-      localStorage.setItem("projectName", projectName)
+
+      localStorage.setItem("projectName", projectName);
     }
   };
-  
-
 
   return (
     <>
-      {/*para que no de error el useState quitalo cuando lo enlaces tambien tiene el console.log */}
-      {selectedRowData && (
-        <div className="bg-black text-white p-10 w-60">
-          <ul>
-            {selectedRowData.map((data, index) => (
-              <li key={index}>{data}</li>
-              
-            ))}
-            
-          </ul>
-        </div>
-      )}
-
-      <NavLink to={"/administrator/dashboard/crear-proyecto"}  className="ml-10 mt-4 lg:mt-8 bg-black hover:bg-slate-600 text-white font-bold py-2 px-4 rounded">
+      {/*
+      Para evitar el error de useState, elimina esto cuando lo enlaces. También tiene el console.log.
+      */}
+      <NavLink
+        to={"/administrator/dashboard/crear-proyecto"}
+        className="ml-10 mt-4 lg:mt-8 bg-black hover:bg-slate-600 text-white font-bold py-2 px-4 rounded"
+      >
         <i className="lg:text-lg mr-2 fa-solid fa-plus"></i>
         Añadir proyecto
       </NavLink>
 
-      
-      <NavLink to={"/administrator/dashboard/crear-proyecto"} onClick={ handleEditClick } className="ml-10 mt-4 lg:mt-8 lg:mr-6 bg-black hover:bg-slate-600 text-white font-bold py-2 px-4 rounded">
+      <NavLink
+        to={"/administrator/dashboard/crear-proyecto"}
+        onClick={handleEditClick}
+        className="ml-10 mt-4 lg:mt-8 lg:mr-6 bg-black hover:bg-slate-600 text-white font-bold py-2 px-4 rounded"
+      >
         Editar
         <i className="lg:text-lg ml-2 lg:ml-10 pencil-icon fa-solid fa-pencil"></i>
       </NavLink>
@@ -147,6 +178,29 @@ function ProyectsAdmin({ header, rows, showAction, showCheckbox }) {
         Generar PDF
         <i className="lg:text-lg ml-2 lg:ml-5 pdf-generator fa-solid fa-file-pdf"></i>
       </button>
+      <button
+        onClick={() => setIsApprovalModalOpen(true)}
+        disabled={isButtonDisabled}
+        className="ml-3 mr-8 mt-8 lg:mt-4 pl-3 bg-black hover:bg-slate-600 text-white font-bold py-2 px-4 rounded"
+      >
+        Aprobar
+        <i className="lg:text-lg ml-2 lg:ml-5 approval-icon fa-solid fa-check"></i>
+      </button>
+
+      {isApprovalModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Aprobar Proyecto</h2>
+            <p>¿Está seguro de que desea aprobar el proyecto seleccionado?</p>
+            <div className="modal-buttons">
+              <button onClick={() => setIsApprovalModalOpen(false)}>
+                Cancelar
+              </button>
+              <button onClick={handleApprove}>Aprobar</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {isModalOpen && (
         <div className="modal-overlay">
@@ -194,11 +248,17 @@ function ProyectsAdmin({ header, rows, showAction, showCheckbox }) {
             </thead>
             <tbody>
               {rows.map((rowData, rowIndex) => (
-                <tr key={rowIndex} onClick={() => handleRowClick(rowData)}>
+                <tr
+                  key={rowIndex}
+                  onClick={() => handleRowClick(rowData, rowIndex)}
+                  className={
+                    rowIndex === selectedRowIndex ? "selected-row" : ""
+                  }
+                >
                   {rowData.map((cellData, cellIndex) => (
                     <td
                       key={cellIndex}
-                      className={`p-5 py-5 text-zinc-500 hover:text-blue-500  text-left border-b-2`}
+                      className={`p-5 py-5 text-zinc-500 hover:text-blue-500 text-left border-b-2`}
                     >
                       {cellData}
                     </td>

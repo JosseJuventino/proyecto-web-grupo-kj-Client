@@ -30,3 +30,31 @@ export const createInscription = async (formData) => {
     );
   }
 };
+
+export const updateInscription = async (email, formData) => {
+  try {
+    const response = await axios.put(`${BASE_URL}${email}`, formData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error("Error al realizar la petición:", error);
+    throw new Error(
+      "Error occurred while updating the movie. Please try again."
+    );
+  }
+};
+
+export const getInscriptionByEmail = async (email) => {
+  try {
+    const response = await axios.get(`${BASE_URL}${email}`);
+    if (response.status === 200) return response.data.data;
+    else return {};
+  } catch (error) {
+    console.log("Error:", error.message);
+    return {};
+  }
+};

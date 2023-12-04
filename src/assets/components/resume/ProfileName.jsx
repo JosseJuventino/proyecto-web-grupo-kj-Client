@@ -5,7 +5,7 @@ const ProfileName = () => {
     return nombre
       .toLowerCase()
       .replace(/\b\w/g, (letra) => letra.toUpperCase());
-    }
+  }
 
   function cutName(completeName) {
     const partesNombre = completeName.split(" ");
@@ -28,7 +28,7 @@ const ProfileName = () => {
               className="object-cover rounded-full border-black-custom w-full border-8"
               src={user.profilePicture}
               alt="ProfileUser"
-              referrerpolicy="no-referrer"
+              referrerPolicy="no-referrer"
             />
           </figure>
           <h2 className="text-2xl">{cutName(user.name)}</h2>

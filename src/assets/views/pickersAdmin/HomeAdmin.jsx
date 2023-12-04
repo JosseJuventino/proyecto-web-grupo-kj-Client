@@ -19,13 +19,7 @@ function HomeAdmin() {
     getData();
   }, []);
 
-  const header = [
-    "Estudiante",
-    "Proyecto",
-    "Correo",
-    "Lugar de servicio",
-    "Estado",
-  ];
+  const header = ["Estudiante", "Proyecto", "Correo", "Estado"];
 
   return (
     <>
