@@ -1,6 +1,7 @@
 import TableInicio from "../../components/table-admin/TableInicio";
 import Count from "./bottones-conteo/Count";
 import { getInscriptions } from "../../../services/inscription.service";
+import { useEffect, useState } from "react";
 
 function HomeAdmin() {
   const [inscriptions, setInscriptions] = useState([]);
