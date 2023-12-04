@@ -11,18 +11,18 @@ function InfoProyect({ info }) {
 
   useEffect(() => {
     const projects = JSON.parse(localStorage.getItem("projects"));
-    const project = projects.find((project) => project.uid === info);
+    const project = projects.find((project) => project._id === info);
     setProject(project);
 
     if (user) {
       user.proyectos.activos.forEach((activesUser) => {
-        if (activesUser.idProject === project.uid) {
+        if (activesUser.idProject === project._id) {
           setStartDate(activesUser.startDate);
         }
       });
 
       user.proyectos.finalizados.forEach((activesUser) => {
-        if (activesUser.idProject === project.uid) {
+        if (activesUser.idProject === project._id) {
           setStartDate(activesUser.startDate);
           setFinishedDate(activesUser.finishedDate);
         }
@@ -35,7 +35,7 @@ function InfoProyect({ info }) {
       <figure className="object-cover w-full lg:w-1/2 lg:mb-4 lg:pr-5">
         <img
           className="object-cover w-full h-full rounded-sm"
-          src={project.image}
+          // src={project.image}
           alt="imagen Proyecto"
         />
       </figure>
