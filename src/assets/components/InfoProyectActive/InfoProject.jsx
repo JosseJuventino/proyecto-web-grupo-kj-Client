@@ -50,12 +50,12 @@ function InfoProyect({ info }) {
           <IconAndTitle
             icon={"fa-solid fa-location-dot "}
             title={"Lugar:"}
-            description={project.location}
+            description={project.place}
           />
           <IconAndTitle
             icon={"fa-solid fa-clock"}
             title={"Servicio Social:"}
-            description={project.type}
+            description={project.socialService}
           />
           <IconAndTitle
             icon={"fa-solid fa-house-user"}
@@ -64,25 +64,9 @@ function InfoProyect({ info }) {
           />
 
           <IconAndTitle
-            icon={"fa-solid fa-play"}
-            title={"Fecha de inicio:"}
-            description={startDateState}
-          />
-
-          {finishedDate != "" ? (
-            <IconAndTitle
-              icon={"fa-solid fa-stop"}
-              title={"Fecha de finalización:"}
-              description={project.startDate}
-            />
-          ) : (
-            ""
-          )}
-
-          <IconAndTitle
             icon={"fa-solid fa-circle-info "}
             title={"Mas información:"}
-            description={project.contactEmail}
+            description={project.moreInformation}
           />
         </div>
       </div>
