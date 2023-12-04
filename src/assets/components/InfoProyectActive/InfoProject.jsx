@@ -15,27 +15,27 @@ function InfoProyect({ info }) {
     setProject(project);
 
     if (user) {
-      user.proyectos.activos.forEach((activesUser) => {
+      user.projectsActives.forEach((activesUser) => {
         if (activesUser.idProject === project._id) {
           setStartDate(activesUser.startDate);
         }
       });
 
-      user.proyectos.finalizados.forEach((activesUser) => {
+      user.finishedProjects.forEach((activesUser) => {
         if (activesUser.idProject === project._id) {
           setStartDate(activesUser.startDate);
           setFinishedDate(activesUser.finishedDate);
         }
       });
     }
-  }, [info, user]);
+  }, [info, user]);S
 
   return (
     <div className="flex flex-col justify-center my-8 lg:flex-row">
       <figure className="object-cover w-full lg:w-1/2 lg:mb-4 lg:pr-5">
         <img
           className="object-cover w-full h-full rounded-sm"
-          // src={project.image}
+          src={project.image}
           alt="imagen Proyecto"
         />
       </figure>
