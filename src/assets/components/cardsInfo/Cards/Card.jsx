@@ -7,7 +7,7 @@ import { getAllCareers } from "../../../../services/careers.service";
 
 import "./popAnimation.css";
 // eslint-disable-next-line react/prop-types
-export function Card({ project, isClickeable = true, haveButtonHeart }) {
+export function Card({ project, isClickeable = true, haveButtonHeart = true }) {
   const navigate = useNavigate();
   const user = CheckIfUserLogin();
 
