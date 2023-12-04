@@ -14,7 +14,7 @@ export const getUserById = async (id) => {
 
 export const updateUser = async (mail, formData) => {
   try {
-    const response = await axios.put(`${BASE_URL}/email/${mail}`, formData, {
+    const response = await axios.put(`${BASE_URL}${mail}`, formData, {
       headers: {
         "Content-Type": "application/json",
       },
