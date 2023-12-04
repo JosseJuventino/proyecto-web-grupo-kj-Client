@@ -1,4 +1,4 @@
-import TableInicio from "../../components/table-admin/TableInicio";
+import TableProyects from "../../components/table-admin/TableProyects";
 import Count from "./bottones-conteo/Count";
 import { getInscriptions } from "../../../services/inscription.service";
 import { useEffect, useState } from "react";
