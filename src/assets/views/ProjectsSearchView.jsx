@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 import { getAllCareers } from "../../services/careers.service";
 import circulosEstudio from "../images/circulosEstudio.jpg";
 import CommonButton from "../components/common-button/CommonButton";
+import { CheckIfUserLogin } from "../../helpers/checkIfUserLogin";
 
 function ProjectsSearchView() {
   const [projectActive, setProjectActive] = useState([]);
   const projectsComplete = JSON.parse(localStorage.getItem("projects")) || [];
   const [careers, setCareers] = useState([]);
+  const user = CheckIfUserLogin();
 
   async function fetchCareers() {
     const careersData = await getAllCareers();
