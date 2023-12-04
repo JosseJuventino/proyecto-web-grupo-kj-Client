@@ -113,32 +113,36 @@ function ProjectsSearchView() {
         </div>
         <div className="container mx-auto mt-4">
           <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md">
-            <div className="flex flex-col sm:flex-row">
-              <div className="w-full sm:w-1/2">
-                <img
-                  src={circulosEstudio}
-                  alt="circulosEstudio"
-                  className="w-full min-h-full object-cover"
-                />
+            {user && user.isTutor ? (
+              ""
+            ) : (
+              <div className="flex flex-col sm:flex-row">
+                <div className="w-full sm:w-1/2">
+                  <img
+                    src={circulosEstudio}
+                    alt="circulosEstudio"
+                    className="w-full min-h-full object-cover"
+                  />
+                </div>
+                <div className="w-full sm:w-1/2 p-4">
+                  <h2 className="text-lg font-bold">¡Conviértete en tutor!</h2>
+                  <p className="mt-3 text-sm">
+                    ¡Sé un guía en el camino del conocimiento! Conviértete en
+                    tutor y comparte tu experiencia para inspirar a otros.
+                    ¡Regístrate ahora y marca la diferencia en la educación! 🚀
+                  </p>
+                  <CommonButton
+                    link="/inscription-ce"
+                    text="Regístrate"
+                    icon="fas fa-user-plus"
+                    color="white"
+                    background="black"
+                    borderColor="black"
+                    hoverBackground="gray-800"
+                  />
+                </div>
               </div>
-              <div className="w-full sm:w-1/2 p-4">
-                <h2 className="text-lg font-bold">¡Conviértete en tutor!</h2>
-                <p className="mt-3 text-sm">
-                  ¡Sé un guía en el camino del conocimiento! Conviértete en
-                  tutor y comparte tu experiencia para inspirar a otros.
-                  ¡Regístrate ahora y marca la diferencia en la educación! 🚀
-                </p>
-                <CommonButton
-                  link="/inscription-ce"
-                  text="Regístrate"
-                  icon="fas fa-user-plus"
-                  color="white"
-                  background="black"
-                  borderColor="black"
-                  hoverBackground="gray-800"
-                />
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

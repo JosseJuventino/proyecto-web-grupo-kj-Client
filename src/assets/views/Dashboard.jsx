@@ -41,7 +41,6 @@ function Dashboard() {
         <div className="font-primary bg-background-primary">
           <Header isLoggedIn={true} />
           <Resume />
-          {projectActive.length > 0 && (
             <div>
               <CardContainer
                 text="Proyectos activos"
@@ -59,7 +58,6 @@ function Dashboard() {
                 needMorePage={projectFinished.length > 4 ? true : false}
               />
             </div>
-          )}
           <Footer />
         </div>
       ) : (

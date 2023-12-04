@@ -19,9 +19,12 @@ function CirculosCard() {
             </div>
             <p>Horas efectivas</p>
 
-            <button className="bg-gray-950 px-5 py-2 text-white rounded-lg mt-2">
+            <a
+              href="https://drive.google.com/drive/u/1/folders/1OXdaE968rLOI1IX7mcRnRIRbZVtNVNOP?pli=1"
+              className="bg-gray-950 px-5 py-2 text-white rounded-lg mt-2"
+            >
               <i className="fa-brands fa-google-drive"></i> Carpeta Drive
-            </button>
+            </a>
           </div>
         </div>
       </div>
