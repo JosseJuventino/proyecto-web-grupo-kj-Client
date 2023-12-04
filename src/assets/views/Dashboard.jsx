@@ -24,10 +24,10 @@ function Dashboard() {
       const proyectos = JSON.parse(localStorage.getItem("projects")) || [];
 
       const projectsActiveFiltered = proyectos.filter((project) =>
-        uidProjectsActivos.includes(project.uid)
+        uidProjectsActivos.includes(project._id)
       );
       const projectsFinishedFiltered = proyectos.filter((project) =>
-        uidProjectsFinalizados.includes(project.uid)
+        uidProjectsFinalizados.includes(project._id)
       );
 
       setProjectFinished(projectsFinishedFiltered);
