@@ -1,0 +1,31 @@
+.principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+  /* Estilos para el textarea */
+  .input {
+    padding: 8px;
+    padding-left: 20px;
+    border-radius: 200px;
+    resize: none;
+    outline: none;
+    font-size: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Cambia el fondo a blanco cuando el textarea tiene foco */
+  .input:focus {
+    background-color: white;
+    color: black; /* Cambia el color del texto si es necesario */
+  }
+  
+  /* Cambia el fondo a negro cuando el textarea no tiene foco */
+  .input:not(:focus) {
+    background-color: #D9D9D9;
+    color: white; /* Cambia el color del texto si es necesario */
+  }
+  

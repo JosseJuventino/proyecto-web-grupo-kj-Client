@@ -1,0 +1,21 @@
+.slide-from-right-enter {
+    transform: translateX(100%);
+    animation: slide-from-right-enter-animation 0.5s forwards;
+  }
+  
+  .slide-from-right-leave {
+    animation: slide-from-right-leave-animation 0.5s forwards;
+  }
+  
+  @keyframes slide-from-right-enter-animation {
+    to {
+      transform: translateX(0%);
+    }
+  }
+  
+  @keyframes slide-from-right-leave-animation {
+    to {
+      transform: translateX(100%);
+    }
+  }
+  
