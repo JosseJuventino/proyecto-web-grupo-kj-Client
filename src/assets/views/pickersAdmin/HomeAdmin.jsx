@@ -1,52 +1,57 @@
 import TableInicio from "../../components/table-admin/TableInicio";
 import Count from "./bottones-conteo/Count";
+import { getInscriptions } from "../../../services/inscription.service";
 
 function HomeAdmin() {
-  
-const header = [
-  "Proyecto",
-  "Esctudiante",
-  "Carnet",
-  "Lugar de servicio",
-  "Carrera",
-  "Facultad"
-];
+  const [inscriptions, setInscriptions] = useState([]);
 
+  const getData = async () => {
+    try {
+      const fetchedInscriptions = await getInscriptions();
+      setInscriptions(fetchedInscriptions);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const header = [
+    "Estudiante",
+    "Proyecto",
+    "Correo",
+    "Lugar de servicio",
+    "Estado",
+  ];
 
   return (
     <>
       <div>
+        <div>
+          <h1 className="mt-10 mx-5 text-4xl font-bold my-8">Inicio</h1>
 
-      <div >
-       <h1 className="mt-10 mx-5 text-4xl font-bold my-8">Inicio</h1>
-       
           <div className="mb-10">
-          <Count/>
+            <Count />
           </div>
-       </div>
-  
+        </div>
 
         <div className="bg-white rounded-xl p-8">
-        <div>
-        <h1 className="mr-auto pl-16 text-3xl">Ultimas Inscripciones</h1>
-        </div>
-        <div className="w-full">
-          <TableInicio
-            header={header} 
-            rows={[
-              ['Caridad', 'Juan', '00000000', 'San Salvador', 'Ingenieria informatica', 'Ingenieria'],
-              ['Apoyo', 'Juan', '00000000', 'San Salvador', 'Ingenieria informatica', 'Ingenieria'], 
-              ['alimentos', 'Juan', '00000000', 'San Salvador', 'Ingenieria informatica', 'Ingenieria'],
-              ['Juan', 'Perez', '00000000', 'San Salvador', 'Ingenieria informatica', 'Ingenieria'],
-              ['Juan', 'Perez', '00000000', 'San Salvador', 'Ingenieria informatica', 'Ingenieria'], 
-              ['Apoyo', 'Juan', '00000000', 'San Salvador', 'Ingenieria informatica', 'Ingenieria'], 
-              ['Juan', 'Perez', '00000000', 'San Salvador', 'Ingenieria informatica', 'Ingenieria']
-            ]}
-            showAction={true}  // Mostrará la columna de Acción
-            showCheckbox={false}  // No mostrará la columna de checkbox
-          />  
-        </div>
+          <div>
+            <h1 className="mr-auto pl-16 text-3xl">Ultimas Inscripciones</h1>
+          </div>
+          <div className="w-full">
+            <TableProyects
+              header={header}
+              rows={inscriptions.map((inscriptions) => [
+                inscriptions.userName,
+                inscriptions.projectName,
+                inscriptions.emailUser,
+                inscriptions.status,
+              ])}
+            />
+          </div>
         </div>
       </div>
     </>

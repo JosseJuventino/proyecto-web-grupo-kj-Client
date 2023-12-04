@@ -37,8 +37,8 @@ function CirculoEstudio() {
               header={header}
               rows={circulos.map((circulos) => [
                 circulos.userName,
-                circulos.subject,
                 circulos.emailUser,
+                circulos.subject,
                 circulos.faculty
               ])}
             />
