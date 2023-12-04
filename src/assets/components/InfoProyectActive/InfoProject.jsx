@@ -28,7 +28,7 @@ function InfoProyect({ info }) {
         }
       });
     }
-  }, [info, user]);S
+  }, [info, user]);
 
   return (
     <div className="flex flex-col justify-center my-8 lg:flex-row">
